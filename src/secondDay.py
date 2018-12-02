@@ -1,36 +1,6 @@
-import math
 import collections
 
-def day1A():
-    file = open("../input/1.txt", "r")
-    value = 0
-
-    for line in file:
-        value += int(line)
-
-    print(value)
-
-def day1B():
-    file = open("../input/1.txt", "r")
-    tab = file.readlines()
-    firstValue = 0
-    found = [0]
-
-    while True:
-        for i in range(0, len(tab)):
-            firstValue += int(tab[i])
-
-            for item in found:
-                if firstValue == item:
-                    print("Found value =", item)
-                    return
-
-            found.append(firstValue)
-
-def day2A():
-    file = open("../input/2.txt", "r")
-    tab = file.readlines()
-
+def day2A(tab: list):
     two = 0
     three = 0
 
@@ -51,12 +21,9 @@ def day2A():
                 three += 1
                 isThree = True
 
-    print(two, "*", three, "=", two * three)
+    return two * three
 
-def day2B():
-    file = open("../input/2.txt", "r")
-    tab = file.readlines()
-
+def day2B(tab: list):
     for i in range(0, len(tab)):
         for j in range(i + 1, len(tab)):
             badLetters = 0
@@ -70,16 +37,18 @@ def day2B():
             if badLetters == 1:
                 letters = list(tab[i])
                 letters[lastBadIndex] = ""
-                print("".join(letters))
+
+                return "".join(letters)
 
 
+    return None
 
 def main():
-    #day1A()
-    #day1B()
+    file = open("../input/2.txt", "r")
+    tab = file.readlines()
 
-    day2A()
-    day2B()
+    print("Day2A():", day2A(tab))
+    print("Day2B():", day2B(tab))
 
 
 if __name__ == "__main__":
