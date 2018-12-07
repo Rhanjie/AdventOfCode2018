@@ -4,7 +4,7 @@ import collections
 
 def solvePuzzle(tab: list):
     fabricList = numpy.zeros((1000, 1000))
-    notOverlapAreaId = -1
+    notOverlappedAreaId = -1
 
     for i in range(len(tab)):
         numbers = re.findall(r"[\d]+", tab[i])
@@ -26,7 +26,7 @@ def solvePuzzle(tab: list):
                     areaId = 0
 
         if areaId != 0:
-            notOverlapAreaId = areaId
+            notOverlappedAreaId = areaId
 
 
     overlappedSegments = 0
@@ -35,7 +35,7 @@ def solvePuzzle(tab: list):
             if fabricList[y][x] == -1:
                 overlappedSegments += 1
 
-    return overlappedSegments, notOverlapAreaId
+    return overlappedSegments, notOverlappedAreaId
 
     ##return fabricList.sum()
 
