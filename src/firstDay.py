@@ -8,21 +8,18 @@ def day1A(tab: list):
 
     return value
 
-def day1B(tab: set):
+def day1B(tab: list):
     firstValue = 0
-    found = {firstValue}
+    found = {}
 
     while True:
-        for i in range(0, len(tab)):
-            firstValue += int(tab[i])
-            #print(firstValue)
+        for element in tab:
+            firstValue += int(element)
 
+            if found.get(firstValue):
+                return firstValue
 
-            for item in found:
-                if firstValue == item:
-                    return item
-
-            found.add(firstValue)
+            found[firstValue] = True
 
 
 def main():
